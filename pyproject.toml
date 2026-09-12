@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sentinelcmd"
+version = "0.1.0"
+description = "Lightweight, local-first defensive endpoint monitoring for Windows"
+readme = "README.md"
+requires-python = ">=3.12"
+license = "MIT"
+keywords = ["security", "defensive", "windows", "monitoring", "cli"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Operating System :: Microsoft :: Windows :: Windows 10",
+  "Operating System :: Microsoft :: Windows :: Windows 11",
+  "Programming Language :: Python :: 3",
+  "Topic :: Security",
+]
+dependencies = ["psutil>=6.1,<8"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10", "ruff>=0.9,<1", "build>=1.2,<2"]
+
+[project.scripts]
+sentinel = "sentinelcmd.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["sentinelcmd*"]
+
+[tool.setuptools.package-data]
+"sentinelcmd.detection" = ["rules.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+target-version = "py312"
+line-length = 110
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F"]
