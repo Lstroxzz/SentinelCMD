@@ -1,0 +1,12 @@
+[
+  {"id": "process_temp", "title": "Executável em diretório temporário", "group": "location", "score": 20, "kinds": ["process_started"], "detector": "temporary_path"},
+  {"id": "process_appdata", "title": "Executável no AppData", "group": "location", "score": 15, "kinds": ["process_started"], "detector": "appdata_path"},
+  {"id": "system_name_path", "title": "Nome do Windows fora de diretório esperado", "group": "identity", "score": 35, "kinds": ["process_started"], "detector": "system_name_path"},
+  {"id": "encoded_command", "title": "PowerShell com comando codificado", "group": "command", "score": 25, "kinds": ["process_started"], "detector": "encoded_command"},
+  {"id": "unusual_command", "title": "Combinação de argumentos incomum", "group": "command", "score": 30, "kinds": ["process_started"], "detector": "unusual_command"},
+  {"id": "downloaded_executable", "title": "Execução de arquivo marcado como download recente", "group": "download", "score": 15, "kinds": ["process_started"], "detector": "downloaded_executable"},
+  {"id": "child_burst", "title": "Muitos processos filhos em intervalo curto", "group": "children", "score": 25, "kinds": ["process_started"], "detector": "child_burst"},
+  {"id": "double_extension", "title": "Arquivo executável com extensão dupla", "group": "file_name", "score": 20, "kinds": ["file_created", "file_modified", "file_mod", "process_started"], "detector": "double_extension"},
+  {"id": "blocked_hash", "title": "SHA-256 na lista de bloqueio do usuário", "group": "exact_ioc", "score": 100, "kinds": ["process_started", "file_created", "file_modified", "file_mod"], "detector": "blocked_hash"},
+  {"id": "blocked_ip", "title": "IP na lista de bloqueio do usuário", "group": "exact_ioc", "score": 100, "kinds": ["network_connection"], "detector": "blocked_ip"}
+]
